@@ -1,6 +1,6 @@
 {
   "name": "thumbnail-slide-react",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "thumbnail-slide in React",
   "main": "dist/index_bundle.js",
   "scripts": {
