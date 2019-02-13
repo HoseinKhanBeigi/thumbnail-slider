@@ -7,6 +7,10 @@
     "start": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoseinKhanBeigi/thumbnail-slider.git"
+  },
   "author": "Hossein KhanBeigi <hoseinkhanbeigi@gmail.com>",
   "license": "ISC",
   "devDependencies": {
