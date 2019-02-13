@@ -18,6 +18,7 @@ Only the class `thumbnail-slide-react` is mandatory to apply proper default styl
 
 ```js
 import ThumbnailSlider from "thumbnail-slide-react";
+import { Icon } from "antd";
 
 <main className="mainOne">
   <div className="standard-product-page-main">
@@ -27,6 +28,10 @@ import ThumbnailSlider from "thumbnail-slide-react";
         direction="horizontal || vertical"
         isTouch="true"
         numberOfThumpImage={5}
+        previousIcon={<Icon type="left" className="arrow" />}
+        nextIcon={<Icon type="right" className="arrow" />}
+        zoomInIcon={<Icon type="zoom-in" className="arrow" />}
+        zoomOutIcon={<Icon type="zoom-out" className="arrow" />}
       />
     </div>
   </div>
