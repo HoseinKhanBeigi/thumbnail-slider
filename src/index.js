@@ -11,7 +11,8 @@ type Props = {
   zoomInIcon: Element,
   zoomOutIcon: Element,
   nextIcon: Element,
-  previousIcon: Element
+  previousIcon: Element,
+  gapBetweenThumbnail: number
 };
 
 type State = {
@@ -47,7 +48,12 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
-    const { direction, isTouch, numberOfThumpImage } = this.props;
+    const {
+      direction,
+      isTouch,
+      numberOfThumpImage,
+      gapBetweenThumbnail
+    } = this.props;
 
     if (numberOfThumpImage) {
       this.setState({
@@ -82,7 +88,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         : swiperSlide.height;
 
     const rightResultForHeight =
-      numberOfThumpImage * newswiperSlide + numberOfThumpImage * 22;
+      numberOfThumpImage * newswiperSlide +
+      numberOfThumpImage * gapBetweenThumbnail;
 
     this.setState({
       swiperSlideHeight: rightResultForHeight,
@@ -113,7 +120,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
               .getBoundingClientRect();
 
       const rightResultForHeightresize =
-        numberOfThumpImage * swiperSlideResize.height + numberOfThumpImage * 22;
+        numberOfThumpImage * swiperSlideResize.height +
+        numberOfThumpImage * gapBetweenThumbnail;
 
       this.setState({
         swiperSlideHeight: rightResultForHeightresize,
@@ -254,11 +262,11 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
   handleChangeTransform = (el, index) => {
     const { secondIndex, sizeOfTranslate, firstIndex } = this.state;
-    const { direction } = this.props;
+    const { direction, gapBetweenThumbnail } = this.props;
 
     const imgheightAndWidth =
       direction === "vertical"
-        ? el.target.getBoundingClientRect().height + 22
+        ? el.target.getBoundingClientRect().height + gapBetweenThumbnail
         : document.querySelector(".thumbnail-slide").getBoundingClientRect()
             .width + 8;
     if (index === secondIndex) {
@@ -339,7 +347,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       zoomInIcon,
       nextIcon,
       zoomOutIcon,
-      previousIcon
+      previousIcon,
+      gapBetweenThumbnail
     } = this.props;
 
     const newclientX = clientX;
@@ -351,10 +360,10 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
     const styleHori = {
       marginRight: "8px",
-      width: `calc((100% - 40px) / ${numberOfThumpImage})`
+      width: `calc((100% - ${gapBetweenThumbnail}px) / ${numberOfThumpImage})`
     };
     const styleVer = {
-      marginBottom: "22px"
+      marginBottom: `${gapBetweenThumbnail}px`
     };
 
     const styleVerContainer = {
