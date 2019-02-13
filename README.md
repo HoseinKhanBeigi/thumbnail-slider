@@ -1,0 +1,64 @@
+## Install
+
+Install with NPM
+
+```
+npm i thumbnail-slide-react --save
+```
+
+Install with yarn
+
+```
+yarn add thumbnail-slide-react
+```
+
+## Usage
+
+Only the class `thumbnail-slide-react` is mandatory to apply proper default styles:
+
+```js
+import ThumbnailSlider from "thumbnail-slide-react";
+
+<main className="mainOne">
+  <div className="standard-product-page-main">
+    <div className="standard-product-container">
+      <ThumbnailSlider
+        images={images}
+        direction="horizontal || vertical"
+        isTouch="true"
+        numberOfThumpImage={5}
+      />
+    </div>
+  </div>
+</main>;
+```
+
+```css
+.mainOne {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  width: calc(100% - 32px);
+}
+
+.standard-product-page-main {
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  margin-right: -16px;
+  position: relative;
+  margin-top: 0;
+}
+
+.standard-product-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+}
+```
+
+# License
+
+The code and the documentation are released under the [MIT License](LICENSE).
