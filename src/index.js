@@ -227,7 +227,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
             .getBoundingClientRect().width;
     if (index > 0) {
       this.setState({ index: index - 1, swiperSlideWidth: swiperSlide });
-      // this.calculateTransform(thumbnailSlideList[index - 1], index - 1);
+      this.handleChangeTransform(thumbnailSlideList[index - 1], index - 1);
     }
     this.handleZoomOut();
   };
@@ -254,7 +254,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         index: index + 1,
         swiperSlideWidth: swiperSlide
       });
-      // this.calculateTransform(thumbnailSlideList[index + 1], index + 1);
+      this.handleChangeTransform(thumbnailSlideList[index + 1], index + 1);
     }
 
     this.handleZoomOut();
@@ -263,10 +263,11 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   handleChangeTransform = (el, index) => {
     const { secondIndex, sizeOfTranslate, firstIndex } = this.state;
     const { direction, gapBetweenThumbnail } = this.props;
+    const Element = el.target ? el.target : el;
 
     const imgheightAndWidth =
       direction === "vertical"
-        ? el.target.getBoundingClientRect().height + gapBetweenThumbnail
+        ? Element.getBoundingClientRect().height + gapBetweenThumbnail
         : document.querySelector(".thumbnail-slide").getBoundingClientRect()
             .width + 8;
     if (index === secondIndex) {
@@ -290,6 +291,17 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         firstIndex: 0
       });
     }
+
+    const thumbnailSlideList =
+      direction === "horizontal"
+        ? document.querySelectorAll(".thumbnail-slide")
+        : document.querySelectorAll(".thumbnail-slideVer");
+
+    thumbnailSlideList.forEach(elemet => {
+      elemet.classList.remove("thumbnail-slide-active");
+    });
+
+    thumbnailSlideList[index].classList.add("thumbnail-slide-active");
 
     this.handleZoomOut();
 
