@@ -14,7 +14,6 @@ yarn add thumbnail-slide-react
 
 ## Usage
 
-Only the class `thumbnail-slide-react` is mandatory to apply proper default styles:
 
 ```js
 import ThumbnailSlider from "thumbnail-slide-react";
