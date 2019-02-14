@@ -12,7 +12,8 @@ type Props = {
   zoomOutIcon: Element,
   nextIcon: Element,
   previousIcon: Element,
-  gapBetweenThumbnail: number
+  gapBetweenThumbnail: number,
+  isButtom: Boolean
 };
 
 type State = {
@@ -360,7 +361,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       nextIcon,
       zoomOutIcon,
       previousIcon,
-      gapBetweenThumbnail
+      gapBetweenThumbnail,
+      isButtom
     } = this.props;
 
     const newclientX = clientX;
@@ -485,11 +487,19 @@ class ThumbnailSlider extends PureComponent<Props, State> {
                   this.handleChangeThumbnail(i);
                 }}
               >
-                <img src={el} width="100vm" />
+                <img src={el} width="100vm" className="imgTH" />
               </li>
             ))}
           </ul>
         </div>
+        {isButtom && (
+          <div>
+            <button onClick={() => this.handleNext()}>{nextIcon}</button>
+            <button onClick={() => this.handlePrevious()}>
+              {previousIcon}
+            </button>
+          </div>
+        )}
       </div>
     );
   }
