@@ -29,6 +29,7 @@ import { Icon } from "antd";
         isTouch="true"
         numberOfThumpImage={5}
         gapBetweenThumbnail={30}
+        isButtom={false}
         previousIcon={<Icon type="left" className="arrow" />}
         nextIcon={<Icon type="right" className="arrow" />}
         zoomInIcon={<Icon type="zoom-in" className="arrow" />}
