@@ -103,6 +103,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     }
 
     window.addEventListener("resize", () => {
+      console.log("hi");
       const { direction } = this.props;
       const SizeOfSwiper =
         direction === "horizontal"
